@@ -8,12 +8,29 @@ return {
     end,
   },
   { "folke/which-key.nvim", lazy = true },
-  { 
-     "nvim-telescope/telescope.nvim",
-     event = "UIEnter",
-     dependencies = {
-       "nvim-lua/plenary.nvim"
-     }
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "debugloop/telescope-undo.nvim",
+    },
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          undo = {
+          mappings = {
+            i = {
+              ["<C-cr>"] = require("telescope-undo.actions").yank_additions,
+              ["<S-cr>"] = require("telescope-undo.actions").yank_deletions,
+              ["<cr>"] = require("telescope-undo.actions").restore,
+            },
+          }
+                      -- telescope-undo.nvim config, see below
+          },
+        },
+      })
+      require("telescope").load_extension("undo")
+    end,
   },
   { 
     "nvim-tree/nvim-tree.lua",
@@ -74,6 +91,13 @@ return {
     'max397574/better-escape.nvim',
     config = function()
       require("better_escape").setup()
+    end
+  },
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('trouble').setup {}
     end
   }
 }

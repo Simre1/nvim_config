@@ -26,7 +26,11 @@ wk.register({
     f = { "<cmd>NvimTreeFocus", "Focus file tree" }
   },
   z = { "<cmd>ZenMode<cr>", "Toggle Zen mode" },
-  w = { "<C-w>", "Window" }
+  w = { "<C-w>", "Window" },
+  u = { "<cmd>Telescope undo<cr>", "View undo history" },
+  r = { "<C-r>", "Redo" },
+  q = { "<cmd>TroubleToggle<cr>", "Show Trouble" },
+  [' '] = { "<cr>", "Confirm"},
 }, { prefix = "<leader>" })
 
 wk.register({
