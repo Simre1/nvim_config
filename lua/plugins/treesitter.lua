@@ -56,7 +56,7 @@ return {
           "yaml",
           -- "wgsl",
           "json",
-          -- "markdown",
+          "haskell"
         },
         sync_install = false,
         auto_install = false,
